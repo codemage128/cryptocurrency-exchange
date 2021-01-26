@@ -1,0 +1,77 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Stats</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/member/dashboard">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Extra</a>
+            </li>
+            <li class="breadcrumb-item active">Stats</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+          </div>
+          <div class="body">
+            <mat-tab-group dynamicHeight>
+              <mat-tab label="BALANCES">
+                <h5 class="m-b-20">Bitcoin Available Balance
+                  <span class="label label-warning">{{btcBalance}}</span>
+                </h5>
+                <h5 class="m-b-20">Lietcoin Available Balance
+                  <span class="label label-info">{{ltcBalance}}</span>
+                </h5>
+                <h5 class="m-b-20">Dogecoin Available Balance
+                  <span class="label label-success">{{dogeBalance}}</span>
+                </h5>
+              </mat-tab>
+              <mat-tab label="EARNINGS">
+                <h5 class="m-b-20">Total profit from positions
+                  <span class="label label-warning">{{profitFromPosition}}</span>
+                </h5>
+                <h5 class="m-b-20">Total profit from affiliates
+                  <span class="label label-info">{{profitFromAffiliate}}</span>
+                </h5>
+                <h5 class="m-b-20">Total profit from all sources
+                  <span class="label label-success">{{profitFromAll}}</span>
+                </h5>
+              </mat-tab>
+              <mat-tab label="Account">
+                <h5 class="m-b-20">Total number of positions
+                  <span class="label label-warning">{{positionsCount}}</span>
+                </h5>
+                <h5 class="m-b-20">Total amount of positions
+                  <span class="label label-info">{{positionsAmount}}</span>
+                </h5>
+                <h5 class="m-b-20">Total number of reinvested positions
+                  <span class="label label-success">{{reinvestedPositionsNumber}}</span>
+                </h5>
+                <h5 class="m-b-20">Total number of inactive positions
+                  <span class="label label-warning">{{inactivePositionsNumber}}</span>
+                </h5>
+                <h5 class="m-b-20">Total amount reinvested
+                  <span class="label label-info">{{totalReinvestedAmount}}</span>
+                </h5>
+                <h5 class="m-b-20">Total amount withdrawn
+                  <span class="label label-success">{{totalWithdrawnAmount}}</span>
+                </h5>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

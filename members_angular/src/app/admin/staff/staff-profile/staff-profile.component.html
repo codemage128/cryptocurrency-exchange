@@ -1,0 +1,237 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Member Profile</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/member/dashboard">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Profile</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name">{{firstName}}&nbsp;{{lastName}}</div>
+              </div>
+              <img src="assets/images/user/usrbig5.jpg" class="user-img" alt="">
+              <div>
+                <span class="phone">
+                  <p>Your referral link</p>
+                  <div style="display: flex; justify-content: center;">
+                    <p>share2riches.com/#/ref/</p>
+                    <p *ngIf="( ! isEditing )" (click)="edit()">
+                      {{referralId}}
+                    </p>
+                  </div>
+                  <div *ngIf="isEditing">
+                    <input type="text" name="referralId" autofocus [(ngModel)]="pendingValue"
+                      (keydown.Enter)="processChanges()" (keydown.Meta.Enter)="processChanges()"
+                      (keydown.Escape)="cancel()" />
+                    <button mat-raised-button color="primary" (click)=processChanges()>Save</button>
+                    <a (click)="cancel()" (keydown.Enter)="cancel()" tabindex="0">Cancel</a>
+                  </div>
+                  <button mat-icon-button (click)="edit()">
+                    <mat-icon aria-label="Edit" class="col-black">edit</mat-icon>
+                  </button>
+                </span>
+              </div>
+              <div class="row">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="About">
+              <div class="p-4">
+              </div>
+            </mat-tab>
+            <mat-tab label="Others">
+              <ul class="list-unstyled p-4">
+              </ul>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-2">face</mat-icon>
+                About Me
+              </ng-template>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2><strong>About</strong></h2>
+                  </div>
+                  <div class="body">
+                    <div class="row">
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Full Name</strong>
+                        <br>
+                        <p class="text-muted">{{firstName}}&nbsp;{{lastName}}</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Mobile</strong>
+                        <br>
+                        <p class="text-muted"></p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Email</strong>
+                        <br>
+                        <p class="text-muted">{{email}}</p>
+                      </div>
+                      <div class="col-md-3 col-6">
+                        <strong>Location</strong>
+                        <br>
+                        <p class="text-muted">Los Angeles</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-2">settings</mat-icon>
+                Settings
+              </ng-template>
+              <div class="header">
+                <h2>
+                  <strong>Wallet address</strong> Settings
+                </h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix">
+                  <div class="col-lg-12 col-md-12">
+                    <form [formGroup]="walletForm" (ngSubmit)="updateWalletAddress()">
+                      <div class="example-container">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Bitcoin wallet address</mat-label>
+                          <input matInput value="{{btcWalletAddress}}" formControlName="btcAddress">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Litecoin wallet address</mat-label>
+                          <input matInput value="{{ltcWalletAddress}}" formControlName="ltcAddress">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Dogecoin wallet address{{dogeWalletAddress}}</mat-label>
+                          <input matInput value="{{dogeWalletAddress}}" formControlName="dogeAddress">
+
+                        </mat-form-field>
+                        <small class="text-danger" *ngIf="errorWalletMsg!=''"> {{errorMsg}}</small>
+                      </div>
+                      <button mat-raised-button color="primary" style="margin-top:20px" type="submit">Save</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <i class="material-icons">security</i>
+                Setting 2FA
+              </ng-template>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2>
+                      <strong>2FA</strong> Allow
+                    </h2>
+                  </div>
+                  <div class="body">
+                    <div class="example-container">
+                      <button mat-stroked-button color="primary" (click)="openDialog()"> Turn on </button>
+                      <button mat-stroked-button color="basic" (click)="tfa_allow(false)"> Turn off </button>
+                    </div>
+                  </div>
+                  <div class="header">
+                    <h2>
+                      <strong>Email 2FA</strong> Allow
+                    </h2>
+                  </div>
+                  <div class="body">
+                    <div class="example-container">
+                      <button mat-stroked-button color="primary" (click)="etfa_allow(true)"> Turn on </button>
+                      <button mat-stroked-button color="basic" (click)="etfa_allow(false)"> Turn off </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <i class="material-icons">vpn_key</i>
+                Setting PinCode
+              </ng-template>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <h2>
+                          <strong>Pin</strong> Settings
+                        </h2>
+                      </div>
+                      <div class="col-lg-6">
+                        <p>
+                          <strong>Current Pin Code:&nbsp;</strong>{{userPin}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="body">
+                    <form [formGroup]="form" (ngSubmit)="savePinCode()">
+                      <div class="example-container">
+                        <mat-error *ngIf="pinErrorMsg != ''">
+                          {{this.pinErrorMsg}}
+                        </mat-error>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Pin Code</mat-label>
+                          <input matInput formControlName="pinCode" [type]="hide ? 'password' && 'number' : 'number'"
+                            required>
+                          <mat-icon matSuffix (click)="hide = !hide">
+                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          <mat-error *ngIf="formCtrl.pinCode.hasError('required')">
+                            pinCode is required
+                          </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                          <mat-label>Confirm Pin Code</mat-label>
+                          <input matInput formControlName="confirmPincode"
+                            [type]="chide ? 'number' && 'password' : 'number'" required>
+                          <mat-icon matSuffix (click)="chide = !chide">
+                            {{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          <mat-error *ngIf="formCtrl.confirmPincode.hasError('required')">
+                            Confirm pinCode is required
+                          </mat-error>
+                          <mat-error *ngIf="formCtrl.confirmPincode.hasError('mustMatch')">pinCode must match
+                          </mat-error>
+                        </mat-form-field>
+                        <small class="text-danger" *ngIf="errorMsg!=''"> {{errorMsg}}</small>
+                      </div>
+                      <button mat-raised-button color="primary" style="margin-top:20px" type="submit">Save</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

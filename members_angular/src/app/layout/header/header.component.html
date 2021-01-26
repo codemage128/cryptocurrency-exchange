@@ -1,0 +1,131 @@
+<nav #navbar class="navbar active">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" onClick="return false;" class="navbar-toggle collapsed"
+        (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-expanded="false"></a>
+      <a href="#" onClick="return false;" class="bars" (click)="mobileMenuSidebarOpen($event,'overlay-open')"></a>
+      <a class="navbar-brand" routerLink={{homePage}}>
+        <img src="assets/images/logo.png" alt="" />
+        <span class="logo-name">Spreadpay</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+      <ul class="pull-left collapse-menu-icon">
+        <li>
+          <button mat-icon-button (click)="callSidemenuCollapse()" class="sidemenu-collapse">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Full Screen Button -->
+        <li class="fullscreen">
+          <button mat-icon-button (click)="callFullscreen()" class=" nav-notification-icons">
+            <mat-icon>fullscreen</mat-icon>
+          </button>
+        </li>
+        <!-- #END# Full Screen Button -->
+        <!-- #START# Notifications-->
+        <li class="nav-item" ngbDropdown>
+          <button mat-icon-button ngbDropdownToggle class="nav-notification-icons">
+            <mat-icon>notifications_none</mat-icon>
+            <span class="label-count bg-orange"></span>
+          </button>
+          <div ngbDropdownMenu class="notification-dropdown pullDown">
+            <div class="noti-list" style="position: relative; max-width: 600px; max-height: 250px; margin: 5px;"
+              [perfectScrollbar]>
+              <ul class="menu">
+                <li>
+                  <div style="padding: 5px;" *ngFor="let position_count of positionInfo">
+                    <span class="table-img msg-user" style="padding-top: 5px;">
+                      <img src="assets/images/user/user4.jpg" alt="">
+                    </span>
+                    <div class="card">
+                      <span class="menu-info">
+                        <span class="menu-title">{{position_count.coin_type}} :
+                          {{position_count.coin_balance}}</span>
+                        <span class="menu-desc"
+                          *ngIf="position_count.confirmation_number != 11 && position_count.confirmation_number != 6 && position_count.confirmation_number != 4; else approved">
+                          <i class="material-icons">access_time</i> {{position_count.confirmation_number + 1}}/3
+                        </span>
+                        <ng-template #approved>
+                          <style>
+                            .confirm_label {
+                              width: fit-content !important;
+                              height: fit-content;
+                              padding: 0px 5px 0px 5px !important;
+                            }
+
+                          </style>
+                          <span class="font-bold col-teal menu-desc" style="margin-top:5px;">Transaction
+                            confirmed</span>
+                          <a mat-button class="confirm_label "
+                            href="https://sochain.com/tx/{{position_count.coin_type}}/{{position_count.txid}}"
+                            target="_blank" color="primary">Show transaction</a>
+                        </ng-template>
+                      </span>
+                    </div>
+                  </div>
+                  <div *ngIf="notificationStatus == false">
+                    <span class="table-img msg-user" style="padding-top: 5px;">
+                      <img src="assets/images/user/user4.jpg" alt="">
+                    </span>
+                    <span class="menu-info">
+                      <div class="body" style="text-align: center;">
+                        <h5>Default message</h5>
+                      </div>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- <a class="text-center d-block border-top py-1">Read
+              All Notifications</a> -->
+          </div>
+        </li>
+        <!-- #END# Notifications-->
+        <li class="nav-item user_profile" ngbDropdown>
+          <a href="#" onClick="return false;" ngbDropdownToggle role="button" class="nav-notification-icons pt-0">
+            <img src={{userImg}} class="rounded-circle" width="32" height="32" alt="User">
+          </a>
+          <div ngbDropdownMenu class="notification-dropdown pullDown">
+            <div class="noti-list" style="position: relative; max-width: 600px; max-height: 300px;" [perfectScrollbar]>
+              <ul class="menu">
+                <li class="body">
+                  <ul class="user_dw_menu">
+                    <li>
+                      <a routerLink="/profile" onClick="return false;">
+                        <mat-icon aria-hidden="false" class="mr-2">person</mat-icon>Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" onClick="return false;">
+                        <mat-icon aria-hidden="false" class="mr-2">feedback</mat-icon>Feedback
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" onClick="return false;">
+                        <mat-icon aria-hidden="false" class="mr-2">help</mat-icon>Help
+                      </a>
+                    </li>
+                    <li>
+                      <a routerLink="/authentication/signin" onClick="return false;">
+                        <mat-icon aria-hidden="false" class="mr-2">power_settings_new</mat-icon>Logout
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <!-- #END# Tasks -->
+        <li class="pull-right">
+          <button mat-icon-button (click)="toggleRightSidebar()" class="nav-notification-icons js-right-sidebar">
+            <mat-icon id="settingBtn">settings</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

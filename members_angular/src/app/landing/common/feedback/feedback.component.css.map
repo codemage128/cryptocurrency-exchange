@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "feedback.component.scss"
+    ],
+    "names": [],
+    "file": "feedback.component.css"
+}

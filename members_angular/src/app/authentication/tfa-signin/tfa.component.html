@@ -1,0 +1,61 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        <div *ngIf="tfa.secret">
+          <span class="login100-form-title p-b-45">
+            Current Settings
+          </span>
+          <span class="error-subheader2 p-t-20 p-b-15">
+            Secret Key - {{tfa.secret || tfa.tempSecret}}
+          </span>
+          <span class="error-subheader2 p-t-20 p-b-15">
+            Auth Type - Time Based - OTP
+          </span>
+          <button mat-flat-button color="primary" class="login100-form-btn" (click)="disabledTfa()">
+            Disable TFA
+          </button>
+        </div>
+        <div *ngIf="!tfa.secret">
+          <span class="login100-form-title p-b-45">
+            Setup TFA
+          </span>
+          <span class="error-subheader2 p-t-20 p-b-15">
+            Scan the QR code or enter the secret key in Google Authenticator
+          </span>
+          <img [src]="tfa.dataURL" alt="" class="img-thumbnail" style="display:block;margin:auto">
+          <span class="error-subheader2 p-t-20 p-b-15">
+            Secret Key - {{tfa.tempSecret}}
+          </span>
+          <span class="error-subheader2 p-t-20 p-b-15">
+            Auth Type - Time Based - OTP
+          </span>
+          <form class="form-group" (ngSubmit)="confirm()" #otpForm="ngForm">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <input matInput name="authcode" type="number" #iauthcode="ngModel" class="form-control" maxlength="6"
+                    placeholder="Enter the Auth Code" id="authcode" autocomplete="off" [(ngModel)]="authcode" required>
+                  <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <button mat-flat-button color="primary" class="login100-form-btn" type="Submit"
+              [disabled]="iauthcode?.errors?.required">
+              Disable TFA
+            </button>
+            <div class="flex-sb-m w-full p-t-15 p-b-20">
+              <div>
+                <span>Back to login page<a routerLink="/authentication/signin">
+                    Login
+                  </a></span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </form>
+      <div class="login100-more" style="background-image: url('assets/images/pages/bg-02.png');">
+      </div>
+    </div>
+  </div>
+</div>

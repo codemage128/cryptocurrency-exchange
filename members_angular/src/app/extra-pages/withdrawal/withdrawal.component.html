@@ -1,0 +1,108 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Withdrawal</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/member/dashboard">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Extra</a>
+            </li>
+            <li class="breadcrumb-item active">Withdrawal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong>Withdrawal</strong>Page</h2>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="header">
+                    <h2>
+                      <strong>Withdraw available</strong>balance & address
+                    </h2>
+                  </div>
+                  <div class="body table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th>Address</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Bitcoin availabe balance</th>
+                          <td>{{btcBalance}}</td>
+                          <td>{{btcWalletAddress}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Litecoin availabe balance</th>
+                          <td>{{ltcBalance}}</td>
+                          <td>{{ltcWalletAddress}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Dogecoin availabe balance</th>
+                          <td>{{dogeBalance}}</td>
+                          <td>{{dogeWalletAddress}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="header">
+                    <h2>Withdraw</h2>
+                  </div>
+                  <div class="body">
+                    <div class="example-container">
+                      <div class="row">
+                        <div class="col-4">
+                          <mat-form-field class="example-full-width" appearance="outline" MatFormFieldControl>
+                            <mat-label>withdraw amount</mat-label>
+                            <input [(ngModel)]="amount" type="number" matInput>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                          <mat-form-field class="example-full-width" appearance="outline" MatFormFieldControl>
+                            <mat-label>Coin type</mat-label>
+                            <mat-select [(ngModel)]="coinType">
+                              <mat-option value="BTC">Bitcoin</mat-option>
+                              <mat-option value="LTC">Litecoin</mat-option>
+                              <mat-option value="DOGE">Dogecoin</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                          <button mat-raised-button color="primary" (click)="customWithFunction()"
+                            style="margin-top:10px">Preview</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

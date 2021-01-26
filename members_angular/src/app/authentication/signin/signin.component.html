@@ -1,0 +1,72 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form" [formGroup]="form" (ngSubmit)="submitForm()">
+        <span class="login100-form-title pb-5">
+          Login
+        </span>
+        <div class="alert alert-danger text-danger" *ngIf="errorMsg!=''"> {{errorMsg}}</div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" value="admin" />
+              <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </a>
+            </mat-form-field>
+          </div>
+        </div>
+        <recaptcha [formControl]="myRecaptcha" (scriptLoad)="onScriptLoad()" (scriptError)="onScriptError()"
+          name="recaptcha" ngDefaultControl class="d-flex justify-content-center"></recaptcha>
+
+        <div class="flex-sb-m w-full p-t-15 p-b-20">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="" name="asdf"> Remember me
+              <span class="form-check-sign">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div>
+            <a class="txt1" routerLink="/authentication/forgot-password">Forgot Password?</a>
+          </div>
+        </div>
+        <div class="container-login100-form-btn">
+          <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+            Login
+          </button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        <div class="text-center p-t-30 p-b-20">
+          <span class="txt3">
+            or <a routerLink="/authentication/signup">
+              sign up
+            </a>
+          </span>
+        </div>
+        <div class="text-center p-t-30 p-b-20" *ngIf="referralFullName != ''">
+          <span class="txt3">
+            Your referral user
+          </span>
+          <span class="txt3">
+            {{referralFullName}}
+          </span>
+        </div>
+      </form>
+      <div class="login100-more" style="background-image: url('assets/images/pages/bg-01.png');">
+      </div>
+    </div>
+  </div>
+</div>

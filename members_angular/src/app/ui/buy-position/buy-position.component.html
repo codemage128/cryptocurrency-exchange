@@ -1,0 +1,117 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Buy Position</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/member/dashboard">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Buy Position</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div [style.display]='visibility'>
+              <div style="text-align: center;">
+                <mat-form-field appearance="outline">
+                  <mat-label>Amount</mat-label>
+                  <mat-select [(ngModel)]="position_amount" name="position_count">
+                    <mat-option *ngFor="let position_count of position_counts" [value]="position_count.value">
+                      {{position_count.viewValue}}&nbsp;positions&nbsp;@&nbsp;${{position_count.value*position_price}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div style="text-align: center;">
+                <mat-form-field appearance="outline">
+                  <mat-label>Coin type</mat-label>
+                  <mat-select [(ngModel)]="coin_type" name="coin_type">
+                    <mat-option *ngFor="let coin_type of coin_types" [value]="coin_type.value">
+                      {{coin_type.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div style="text-align: center; margin-bottom: 20px;">
+                <button mat-raised-button color="primary" style="margin-left: 10px;"
+                  (click)="customWithFunction(coin_type, position_amount)">Buy Position</button>
+              </div>
+            </div>
+            <div *ngIf="dataUrl != ''">
+              <div class="row" style="pad: 20px;">
+                <div class="col-xs-12 col-sm-3 col-md-4 col-lg-3">
+                  <h3>Payment</h3>
+                  <h4>Expires</h4>
+                  <div id="demo">
+                  </div>
+                  <h4>Amounts</h4>
+                  ${{position_price * position_amount}}
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9" style="text-align: center;">
+                  <div class="card" style="padding: 20px;">
+                    <h4>{{coin_type.toUpperCase()}}:&nbsp;&nbsp;&nbsp;{{coin_price}}</h4>
+                    <img [src]="dataUrl" alt="" class="img-thumbnail" style="display:block;margin:auto">
+                    <!-- <h4>{{coin_address}}</h4> -->
+                    <style>
+                      .copy_clipboard:hover {
+                        background-color: lightgrey;
+                      }
+
+                      .copy_clipboard {
+                        border: solid 1px;
+                        border-radius: 5px;
+                        margin: auto;
+                        text-align: center;
+                        width: 280px;
+                      }
+                    </style>
+                    <h5 style="margin-top: 10px;">Payment address: </h5>
+                    <input title="copy address to Clipboard" class="copy_clipboard" value="{{coin_address}}" type="text"
+                      ngxClipboard appearance="outline" [cbContent]="coin_address"
+                      size="((this.value.length + 1) * 8) + 'px'" />
+                    <div>
+                      <a mat-raised-button href="http://{{data}}" target="_blank" color="primary"
+                        style="margin-top:10px">Pay in Wallet</a>
+                    </div>
+                    <button style="text-align: right;" mat-button color="primary" (click)="goToBuyPosition()">--> GO to
+                      buy position</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix" *ngFor="let position_count of positionInfo">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="header bg-green">
+          <h2>
+            Confirmation
+          </h2>
+        </div>
+        <div class="body">
+          <h5 style="margin-top: 10px;">{{position_count.confirmation_number}}/3</h5>
+          <div
+            *ngIf="position_count.confirmation_number == 3 || position_count.confirmation_number == 10 || position_count.confirmation_number == 5">
+            <h2 class="col-teal">Done</h2>
+          </div>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

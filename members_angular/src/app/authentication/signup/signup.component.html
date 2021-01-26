@@ -1,0 +1,88 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form" [formGroup]="form" (ngSubmit)="submitForm()">
+        <span class="login100-form-title p-b-30">
+          Register
+        </span>
+        <mat-error *ngIf="errorMsg != ''">{{errorMsg}}</mat-error>
+        <div class="form-group">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>firstName</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-error *ngIf="formCtrl.firstName.hasError('required')">
+              firstName is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>lastName</mat-label>
+            <input matInput formControlName="lastName" required>
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-error *ngIf="formCtrl.lastName.hasError('required')">
+              lastName is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-error *ngIf="formCtrl.email.hasError('required') || formCtrl.email.touched">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+            <mat-icon matSuffix (click)="hide = !hide">
+              {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="formCtrl.password.hasError('required')">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" [type]="chide ? 'password' : 'text'" required>
+            <mat-icon matSuffix (click)="chide = !chide">
+              {{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error
+              *ngIf="formCtrl.confirmPassword.hasError('required') || formCtrl.confirmPassword.hasError('mustMatch')">
+              Confirm Password is required
+              <mat-error>Password must match</mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <recaptcha [formControl]="myRecaptcha" (scriptLoad)="onScriptLoad()" (scriptError)="onScriptError()"
+            class="d-flex justify-content-center">
+          </recaptcha>
+        </div>
+        <div class="flex-sb-m w-full p-t-15 p-b-20">
+          <div>
+            <span>
+              Already Registered?
+              <a routerLink="/authentication/signin">
+                Login
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="container-login100-form-btn">
+          <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+            Register
+          </button>
+        </div>
+        <div class="text-center p-t-30 p-b-20" *ngIf="referralFullName != ''">
+          <span class="txt3">
+            Your referral user
+          </span>
+          <span class="txt3">
+            {{referralFullName}}
+          </span>
+        </div>
+      </form>
+      <div class="login100-more" style="background-image: url('assets/images/pages/bg-02.png');">
+      </div>
+    </div>
+  </div>
+</div>

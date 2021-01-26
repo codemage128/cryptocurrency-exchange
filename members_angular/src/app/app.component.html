@@ -1,0 +1,15 @@
+<app-page-loader *ngIf="!_router.url.includes('/landing')"></app-page-loader>
+<app-header *ngIf="!_router.url.includes('/authentication') && !_router.url.includes('/landing') "></app-header>
+<app-sidebar *ngIf="!_router.url.includes('/authentication') && !_router.url.includes('/landing') "></app-sidebar>
+<app-right-sidebar *ngIf="!_router.url.includes('/landing')"></app-right-sidebar>
+<app-payment-notification *ngIf="!_router.url.includes('/authentication') || !_router.url.includes('/landing') ">
+</app-payment-notification>
+<div class="preloader">
+    <div class="loader">
+        <div class="shadow"></div>
+        <div class="box"></div>
+    </div>
+</div>
+<app-landing-header *ngIf="_router.url.includes('/landing')"></app-landing-header>
+<router-outlet></router-outlet>
+<app-landing-footer *ngIf="_router.url.includes('/landing')"></app-landing-footer>

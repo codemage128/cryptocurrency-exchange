@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "talk-button.component.scss"
+    ],
+    "names": [],
+    "file": "talk-button.component.css"
+}
