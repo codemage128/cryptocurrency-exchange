@@ -1,0 +1,115 @@
+<!-- Start Navbar Area -->
+<div class="navbar-area {{layoutClass}}">
+    <div class="luvion-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" routerLink="/">
+                    <!-- <img *ngIf="path != '/'" src="assets/img/logo.png" alt="logo"> -->
+                    <img src="assets/img/black-logo.png" alt="logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <style>
+                    .black-color {
+                        color: black !important;
+                    }
+                </style>
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="black-color nav-link">Home <i
+                                    class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home One</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/demo-2" routerLinkActive="active" class="nav-link">Home Two</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/demo-3" routerLinkActive="active" class="nav-link">Home Three</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a routerLink="/about-us" routerLinkActive="active" class="black-color nav-link">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a routerLink="/features" routerLinkActive="active" class="black-color nav-link">Features</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="black-color nav-link">
+                                Pages <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/about-us" routerLinkActive="active" class="nav-link">About Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/team" routerLinkActive="active" class="nav-link">Team</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/pricing" routerLinkActive="active" class="nav-link">Pricing</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/error-404" routerLinkActive="active" class="nav-link">404 Error</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/faq" routerLinkActive="active" class="nav-link">FAQ</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a routerLink="/pricing" routerLinkActive="active" class="black-color nav-link">Pricing</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="black-color nav-link">Blog <i
+                                    class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a routerLink="/blog" routerLinkActive="active" class="nav-link">Blog</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a routerLink="/blog-details" routerLinkActive="active" class="nav-link">Blog
+                                        Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a routerLink="/contact" routerLinkActive="active" class="black-color nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <div class="others-options">
+                        <a (click)="login()" routerLink="/" routerLinkActive="active" class="black-color login-btn"><i
+                                class="flaticon-user"></i> Log In</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->

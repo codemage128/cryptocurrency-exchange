@@ -1,0 +1,19 @@
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader">
+        <div class="shadow"></div>
+        <div class="box"></div>
+    </div>
+</div>
+<!-- End Preloader -->
+<app-header
+    *ngIf="!(
+        location == '/error-404' ||
+        location == '/signup' ||
+        location == '/signin')"></app-header>
+<router-outlet></router-outlet>
+<app-footer
+    *ngIf="!(
+        location == '/error-404' ||
+        location == '/signup' ||
+        location == '/signin')"></app-footer>

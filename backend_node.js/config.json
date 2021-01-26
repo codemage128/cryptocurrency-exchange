@@ -1,0 +1,16 @@
+﻿{
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "",
+        "database": "spreadpay"
+    },
+    "position": {},
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+    "coin_address": {
+        "btc": "37zuyXgebg3qjvXL38UhjZrng8aeMn3yYq",
+        "dgc": "9yLLgL8gX2Ve3vWcUuXLp3M27YxkBb1g9z",
+        "ltc": "MAXqPvsqMgZZBiN4cRVGGSxhkjPoEKuLPg"
+    }
+}

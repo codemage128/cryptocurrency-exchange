@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "account-button.component.scss"
+    ],
+    "names": [],
+    "file": "account-button.component.css"
+}
